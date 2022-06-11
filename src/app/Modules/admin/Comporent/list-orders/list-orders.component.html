@@ -1,0 +1,100 @@
+<div class="wrapper row-offcanvas row-offcanvas-left">
+  <div style="display: flex">
+      <div class="container" style="padding: 0; position: relative">
+          <div class="container">
+              <h1 class="title">List Order</h1>
+              <div class="search_box pull-right" style="margin-bottom: 10px">
+                  <div class="input-group">
+                      <form action="" style="display: flex; justify-content: space-between">
+                          <div class="search-box form-group col-3"><h5>Receiver name:</h5>
+                            <input style="width: 100%" type="text" name="keyword" id="keyword" size="50"/></div>
+                          <div class="search-box form-group col-4" style="width: 160px">
+                              <h5>Start date</h5>
+                              <input type="date" class="form-control"
+                                     name="startDate" placeholder="Enter Start date" id="startDate">
+                          </div>
+                          <div class="search-box form-group col-4" style="width: 160px">
+                              <h5>End date</h5>
+                              <input type="date" class="form-control"
+                                     name="endDate" placeholder="Enter End date" id="endDate">
+                          </div>
+                          <button class="btn btn-primary btn-sm" style="height: 39px; margin-top: 29px">Submit</button>
+
+                      </form>
+                  </div>
+              </div>
+              <table class="table table-bordered">
+                  <thead>
+                  <tr style="text-align: center">
+                      <th style="text-align: center">Order ID</th>
+                      <th style="text-align: center">Name</th>
+                      <th style="text-align: center">Address</th>
+                      <th style="text-align: center">Phone</th>
+                      <th style="text-align: center">Promotion</th>
+                      <th style="text-align: center">Total</th>
+                      <th style="text-align: center">Status</th>
+                      <th style="text-align: center">Created At</th>
+                      <th style="text-align: center">Actions</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr *ngFor="let o of listOrders">
+                      <td>{{o.orderId}}</td>
+                      <td>{{o.fullName}}</td>
+                      <td>{{o.address}}</td>
+                      <td>{{o.phone}}</td>
+                      <td>{{o.promotion.code}}</td>
+                      <td>{{o.total}}</td>
+                      <td>{{o.status}}</td>
+                      <td>{{o.createAt}}</td>
+                      <td style="text-align: center">
+                          <a class="btn btn-primary btn-sm" href="#" style="margin-top: 0">Detail</a>
+                      </td>
+                  </tr>
+                  </tbody>
+              </table>
+              <div class="text-center">
+                  <div class="text-center">
+                      <span>Total Items: </span>
+                  </div>
+                  <nav class="pagination justify-content-center flex-wrap">
+                          <li>
+                              <a class="page-link">First</a>
+                          </li>
+                          <li>
+                              <a class="page-link">Previous</a>
+                          </li>
+                              <li class="page-item">
+                                  <a class="page-link"></a>
+                              </li>
+                                  <li class="page-item">
+                                      <a class="page-link"></a>
+                                  </li>
+                                  <li>
+                                      <a class="page-link">...</a>
+                                  </li>
+                                  <li class="page-item">
+                                      <a class="page-link"></a>
+                                  </li>
+                                  <li>
+                                      <a class="page-link">...</a>
+                                  </li>
+                                  <li class="page-item">
+                                      <a class="page-link"></a>
+                                  </li>
+                                  <li>
+                                      <a th:href="@{'/admin/order/'+${currentPage + 3}+ ${query}}"
+                                         class="page-link">...</a>
+                                  </li>
+                          <li>
+                              <a class="page-link">Next</a>
+                          </li>
+                          <li>
+                              <a class="page-link">Last</a>
+                          </li>
+                  </nav>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

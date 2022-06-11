@@ -1,0 +1,30 @@
+<div class="wrapper row-offcanvas row-offcanvas-left">
+  <div style="display: flex">
+      <div class="container" style="padding: 0; position: relative">
+          <div class="container">
+              <div class="row"
+                   style="border: 3px darkgrey solid; border-radius: 10px; width: 50%; margin: 50px auto; padding: 20px;">
+                  <div class="col-sm-12">
+                      <h2 class="title">Add Category</h2>
+                      <form method="post" enctype="multipart/form-data" [formGroup]="formAddCategory" (ngSubmit)="addCategory()">
+                          <div class="form-group">
+                              <label>Category Name</label>
+                              <input field="" type="text" class="form-control"
+                                     name="categoryName" placeholder="Enter name" id="categoryName" formControlName="categoryName">
+                              <p style="color: red" *ngIf="formAddCategory.get('categoryName')?.errors?.['required'] && formAddCategory.get('categoryName')?.dirty">Vui lòng nhập tên danh mục</p>
+                              <label>Status</label> <br>
+                              <input name="status" type="radio" value="true" formControlName="status"> Enable |
+                              <input name="status" type="radio" value="false" formControlName="status"> Disable
+                          </div>
+                          <br>
+                          <div class="flex-button">
+                            <button [disabled]="formAddCategory.invalid" type="submit" class="btn btn-primary">Save</button>
+                            <a class="btn btn-primary" routerLink="/admin/listCategories">Display List Category</a>
+                          </div>
+                      </form>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

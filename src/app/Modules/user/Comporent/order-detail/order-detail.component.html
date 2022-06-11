@@ -1,0 +1,53 @@
+<div class="breadcrumbs_area">
+  <div class="container">
+      <div class="row">
+          <div class="col-12">
+              <div class="breadcrumb_content">
+                  <ul>
+                      <li><a href="index.html">home</a></li>
+                      <li>Chi tiết đơn hàng</li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<!--breadcrumbs area end-->
+
+<!--shopping cart area start -->
+<div class="shopping_cart_area mt-60">
+  <div class="container">
+      <form action="#">
+          <div class="row">
+              <div class="col-12">
+                  <div class="table_desc">
+                      <div class="cart_page table-responsive">
+                          <table>
+                              <thead>
+                                  <tr>
+                                      <th> Mã đơn hàng </th>
+                                      <th >Mã chi tiết đơn hàng</th>
+                                      <th >Tên sản phẩm</th>
+                                      <th >Số lượng</th>
+                                      <th >Giá tiền</th>
+                                      <th >Ngày tạo</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  <tr *ngFor="let od of listOrderDetails">
+                                      <td>{{od.order.orderId}}</td>
+                                      <td>{{od.orderDetailId}}</td>
+                                      <td>{{od.product.productName}}</td>
+                                      <td>{{od.quantity}}</td>
+                                      <td>{{od.price}} VNĐ</td>
+                                      <td>{{od.createAt}}</td>
+                                  </tr>
+                                  <tr><td colspan="6" style="text-align: center; color: blue">Phí vận chuyển: 50000 VNĐ</td></tr>
+                                  <tr><td colspan="6" style="text-align: center; color: red">TỔNG CỘNG: {{total}} VNĐ</td></tr>
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>
+              </div>
+          </div>
+<!--shopping cart area end -->

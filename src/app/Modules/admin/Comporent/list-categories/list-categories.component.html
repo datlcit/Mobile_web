@@ -1,0 +1,91 @@
+<div class="wrapper row-offcanvas row-offcanvas-left">
+  <div style="display: flex">
+      <div th:include="layout_admin/nav_bar:: nav_bar"></div>
+      <div class="container" style="padding: 0; position: relative">
+          <div th:include="layout_admin/navi_bar:: navi_bar"></div>
+          <div class="container">
+            <h1 class="title">List Categories</h1>
+            <div style="display: flex; justify-content: space-between">
+                <div class="add-button">
+                    <a class="btn btn-primary" routerLink="/admin/addCategory">ADD CATEGORY</a>
+                </div>
+                <div class="search_box pull-right">
+                    <div class="input-group">
+                        <form>
+                            <p>Search:</p> <input type="text" name="keyword" id="keyword" size="50"/>
+                        </form>
+                    </div>
+                </div>
+            </div>
+              <table class="table table-bordered">
+                  <thead>
+                    <tr style="text-align: center">
+                        <th><a style="color: black"> Id</a></th>
+                        <th>Name</th>
+                        <th>Status</th>
+                        <th>Total Products</th>
+                        <th style="text-align: center">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  <tr *ngFor="let category of categories">
+                      <td>{{category.categoryId}}</td>
+                      <td>{{category.categoryName}}</td>
+                      <td>{{category.status}}</td>
+                      <td>{{category.getAllProducts}}</td>
+                      <td class="td-button">
+                          <a [routerLink]="['/admin/editCategory/' + category.categoryId]" class="btn btn-primary btn-sm">Detail & Edit</a>
+                          <a routerLink="/admin/listCategories" (click)="deleteCategory(category.categoryId)" class="btn btn-danger btn-sm">Delete</a>
+                      </td>
+                  </tr>
+                  </tbody>
+              </table>
+              <div class="text-center">
+                  <div class="text-center">
+                      <span>Total Items:  </span>
+                  </div>
+                  <nav class="pagination justify-content-center flex-wrap">
+                          <li >
+                              <a  class="page-link">First</a>
+                          </li>
+                          <li>
+                              <a th:href=""
+                                 class="page-link">Previous</a>
+                          </li>
+
+                              <li class="page-item">
+                                  <a class="page-link"> </a>
+                              </li>
+
+                                  <li class="page-item">
+                                      <a class="page-link"> </a>
+                                  </li>
+                                  <li>
+                                      <a th:href=""
+                                         class="page-link">...</a>
+                                  </li>
+                                  <li>
+                                      <a class="page-link"> </a>
+                                  </li>
+
+                                  <li>
+                                      <a  class="page-link">...</a>
+                                  </li>
+                                  <li class="page-item">
+                                      <a  class="page-link"> </a>
+                                  </li>
+                                  <li>
+                                      <a  class="page-link">...</a>
+                                  </li>
+                          <li>
+                              <a  class="page-link">Next</a>
+                          </li>
+                          <li>
+                              <a  class="page-link">Last</a>
+                          </li>
+                  </nav>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

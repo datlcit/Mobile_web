@@ -1,0 +1,54 @@
+<div class="wrapper row-offcanvas row-offcanvas-left">
+  <div style="display: flex">
+      <div></div>
+      <div class="container" style="padding: 0; position: relative">
+          <div></div>
+          <div class="container">
+              <h1 class="title">List Promotions</h1>
+              <div style="display: flex; justify-content: space-between">
+                  <div class="add-button">
+                      <a class="btn btn-primary" routerLink="/admin/addPromotion">ADD PROMOTIONS</a>
+                  </div>
+                  <div class="search_box pull-right">
+                      <div class="input-group">
+                          <form>
+                              <p>Search:</p> <input type="text" name="keyword" id="keyword" size="50"/>
+                          </form>
+                      </div>
+                  </div>
+              </div>
+              <table class="table table-bordered">
+                  <tr style="text-align: center">
+                      <th><a style="color: black">
+                          Id</a></th>
+                      <th>Name</th>
+                      <th>Quantity</th>
+                      <th>Apply day</th>
+                      <th>Max discount</th>
+                      <th>Remain Apply</th>
+                      <th>Status</th>
+                      <th>Code</th>
+                      <th style="text-align: center">Action</th>
+                  </tr>
+                  <tbody>
+                  <tr *ngFor="let p of listPromotions">
+                      <td>{{p.promotionId}}</td>
+                      <td>{{p.promotionName}}</td>
+                      <td>{{p.quantity}}</td>
+                      <td>{{p.applyDay}}</td>
+                      <td>{{p.maxDiscount}}</td>
+                      <td>{{p.remainApply}}</td>
+                      <td>{{p.status}}</td>
+                      <td>{{p.code}}</td>
+                      <td class="editButton">
+                        <a [routerLink]="['/admin/editPromotion/' + p.promotionId]" class="btn btn-primary btn-sm" style="margin-top: 20px">Details and Edit</a>
+                        <a class="btn btn-danger btn-sm"
+                           href="#" style="margin-top: 20px">Disable</a>
+                    </td>
+                  </tr>
+                  </tbody>
+              </table>
+          </div>
+      </div>
+  </div>
+</div>

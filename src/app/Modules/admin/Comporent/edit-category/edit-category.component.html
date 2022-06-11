@@ -1,0 +1,38 @@
+<div class="wrapper row-offcanvas row-offcanvas-left">
+  <div style="display: flex">
+      <div th:include="layout_admin/nav_bar:: nav_bar"></div>
+      <div class="container" style="padding: 0; position: relative">
+          <div th:include="layout_admin/navi_bar:: navi_bar"></div>
+          <div class="container">
+              <div class="row" style="border: 1px darkgrey solid; border-radius: 10px; width: 50%; margin: 0 auto; padding: 20px;">
+                  <div class="col-sm-12">
+                      <h2>Edit Category</h2>
+                      <form method="post" enctype="multipart/form-data" [formGroup]="formEditCategory" (ngSubmit)="editCategory()">
+                          <div class="form-group">
+                              <label>Id</label>
+                              <input class="form-control" name="id" placeholder="Enter id" id="id" value="" readonly formControlName="categoryId">
+                          </div>
+                          <div class="form-group">
+                              <label>Category Name</label>
+                              <input class="form-control" name="name" placeholder="Enter name" id="name" value="" required formControlName="categoryName">
+                              <p style="color: red" *ngIf="formEditCategory.get('categoryName')?.errors?.['required'] && formEditCategory.get('categoryName')?.dirty">Vui lòng nhập tên danh mục</p>
+                          </div>
+                          <div class="form-group">
+                            <label>Status</label> <br>
+                            <input name="status" type="radio" value="true" required formControlName="status"> Enable |
+                            <input name="status" type="radio" value="false" required formControlName="status"> Disable
+                        </div>
+                          <br>
+                          <div class="editButton">
+                            <button [disabled]="formEditCategory.invalid" type="submit" class="btn btn-primary">Save Edit</button>
+                            <a class="btn btn-primary" href="/admin/listCategories">Display List Categories</a>
+                          </div>
+
+                      </form>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+

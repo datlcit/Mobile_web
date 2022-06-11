@@ -1,0 +1,112 @@
+<div class="breadcrumbs_area">
+  <div class="container">
+      <div class="row">
+          <div class="col-12">
+              <div class="breadcrumb_content">
+                  <ul>
+                      <li><a href="index.html">home</a></li>
+                      <li>Shopping Cart</li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<!--breadcrumbs area end-->
+
+<!--shopping cart area start -->
+<div class="shopping_cart_area mt-60">
+  <div class="container">
+      <form action="#">
+          <div class="row">
+              <div class="col-12">
+                  <div class="table_desc">
+                      <div class="cart_page table-responsive">
+                          <table>
+                              <thead>
+                                  <tr>
+                                      <th class="product_remove">Delete</th>
+                                      <th class="product_thumb">Image</th>
+                                      <th class="product_name">Product</th>
+                                      <th class="product-price">Price</th>
+                                      <th class="product_quantity">Quantity</th>
+                                      <th class="product_total">Total</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+
+                                  <tr *ngFor="let c of data; let i = index">
+
+                                      <td (click)="deleteCart(i)" class="product_remove"><a><i class="fa fa-trash-o"></i></a>
+                                      </td>
+                                      <td class="product_thumb">
+                                        <a href="#">
+                                          <img src="{{c.product.productImage}}" alt="">
+                                        </a>
+                                      </td>
+                                      <td class="product_name"><a href="#">{{c.product.productName}}</a></td>
+                                      <td class="product-price">{{c.product.price}}</td>
+                                      <td class="product_quantity">
+                                        <form>
+                                          <label>Quantity</label>
+                                            <input type="number" (change)="updateCart()"  [(ngModel)]="c.quantity"  name="quantity" />
+                                        </form>
+                                      </td>
+                                      <td class="product_total">{{c.product.price * c.quantity}} VNĐ</td>
+                                  </tr>
+                                  <tr *ngIf="data.length==0">
+                                    <td colspan="6">Chưa có sản phẩm trong giỏ</td>
+                                  </tr>
+
+                              </tbody>
+                          </table>
+                      </div>
+                      <div class="cart_submit">
+                        <button (click)="reloadCurrentPage()" type="submit">update cart</button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <!--coupon code area start-->
+          <div class="coupon_area">
+              <div class="row">
+                  <div class="col-lg-6 col-md-6">
+                      <div class="coupon_code left">
+                          <h3>Mã giảm giá</h3>
+                          <div class="coupon_inner">
+                              <p>Nhập mã giảm giá mà bạn có.</p>
+                              <input placeholder="Coupon code" type="text">
+                              <button type="submit">Sử dụng</button>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-lg-6 col-md-6">
+                      <div class="coupon_code right">
+                          <h3>Tổng giỏ hàng</h3>
+                          <div class="coupon_inner">
+                              <div class="cart_subtotal">
+                                  <p>Tổng phụ</p>
+                                  <p class="cart_amount">{{subtotal}} VNĐ</p>
+                              </div>
+                              <div *ngIf="subtotal != 0" class="cart_subtotal ">
+                                  <p>Vận chuyển</p>
+                                  <p class="cart_amount"><span>Phí giao hàng:</span> 50000 VNĐ</p>
+                              </div>
+
+                              <div *ngIf="subtotal != 0" class="cart_subtotal">
+                                  <p>Đơn giá</p>
+                                  <p class="cart_amount">{{subtotal + 50000}} VNĐ</p>
+                              </div>
+                              <div *ngIf="subtotal != 0" class="checkout_btn">
+                                  <a href="/checkout">Tới trang thanh toán </a>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <!--coupon code area end-->
+      </form>
+  </div>
+</div>
+<!--shopping cart area end -->

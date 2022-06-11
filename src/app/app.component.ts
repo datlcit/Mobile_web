@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { LazyLoadServiceService } from './Modules/user/userServices/lazy-load-service.service';
 
 @Component({
   selector: 'app-root',

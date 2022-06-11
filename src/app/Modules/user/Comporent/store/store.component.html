@@ -1,0 +1,155 @@
+<!--breadcrumbs area start-->
+<div class="breadcrumbs_area">
+  <div class="container">
+      <div class="row">
+          <div class="col-12">
+              <div class="breadcrumb_content">
+                  <ul>
+                      <li><a routerLink="home">Trang chủ</a></li>
+                      <li>Cửa hàng</li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<!--breadcrumbs area end-->
+
+<!--shop  area start-->
+<div class="shop_area shop_fullwidth mt-60 mb-60">
+  <div class="container">
+      <div class="row">
+          <div class="col-12">
+              <!--shop wrapper start-->
+              <!--shop toolbar start-->
+              <div class="shop_toolbar_wrapper">
+                  <div class="shop_toolbar_btn">
+
+                      <button data-role="grid_3" type="button" class=" btn-grid-3" data-bs-toggle="tooltip"
+                          title="3"></button>
+
+                      <button data-role="grid_4" type="button" class="active btn-grid-4" data-bs-toggle="tooltip"
+                          title="4"></button>
+
+                      <button data-role="grid_list" type="button" class="btn-list" data-bs-toggle="tooltip"
+                          title="List"></button>
+                  </div>
+                  <div class=" niceselect_option">
+                      <form class="select_option" action="#">
+                          <select name="orderby" id="short">
+
+                              <option selected value="1">Sắp xếp theo</option>
+                              <option value="2">Giá tăng dần</option>
+                              <option value="3">Giá giảm dần</option>
+                          </select>
+                      </form>
+                  </div>
+                  <div class="page_amount">
+                      <p>Hiển thị 12 sản phẩm</p>
+                  </div>
+              </div>
+              <!--shop toolbar end-->
+
+              <div class="row shop_wrapper">
+                  <div class="col-lg-3 col-md-4 col-12 class_ngFor" *ngFor="let p of shop_product">
+                      <article class="single_product">
+                          <figure>
+                              <div class="product_thumb editProductThumb">
+                                  <a routerLink="../productDetail/{{p.productId}}" class="primary_img" href="">
+                                    <img src="{{p.productImage}}" alt=""></a>
+                                  <!-- <a class="secondary_img" href="product-details.html"><img
+                                          src="assets/img/product/product2.jpg" alt=""></a> -->
+                                  <!-- <div class="label_product" *ngIf="p.oldPrice != null">
+                                      <span class="label_sale">sale</span>
+                                  </div> -->
+                                  <div class="action_links editActionLinks">
+                                      <ul>
+                                          <li (click)="addToWishList(p.productId)" class="wishlist"><button href="wishlist.html" title="Add to Wishlist"><i
+                                                      class="fa fa-heart-o" aria-hidden="true"></i></button></li>
+                                          <!-- <li class="compare"><a href="#" title="compare"><span
+                                                      class="ion-levels"></span></a></li> -->
+                                          <li class="quick_button"><a href="#" data-bs-toggle="modal"
+                                                  data-bs-target="#modal_box" title="quick view"> <span
+                                                      class="ion-ios-search-strong"></span></a></li>
+                                      </ul>
+                                  </div>
+                                  <div (click)="buy(p)" (click)="addTotal(p.price)" class="add_to_cart">
+                                      <button title="add to cart">Thêm vào giỏ hàng</button>
+                                  </div>
+                              </div>
+                              <div class="product_content grid_content">
+                                  <div class="price_box">
+                                      <!-- <span class="old_price">{{p.oldPriceView}}</span><br> -->
+                                      <span class="current_price">{{p.price}} VNĐ</span>
+                                  </div>
+                                  <div class="product_ratings">
+                                      <ul>
+                                          <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                          <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                          <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                          <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                          <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                      </ul>
+                                  </div>
+                                  <h3 class="product_name grid_name"><a href="product-details.html">{{p.productName}}</a></h3>
+                              </div>
+                              <div class="product_content list_content">
+                                  <div class="left_caption">
+                                      <div class="price_box">
+                                          <!-- <span class="old_price">{{p.old_price_view}}</span> -->
+                                          <span class="current_price">{{p.price}} VNĐ</span>
+                                      </div>
+                                      <h3 class="product_name"><a href="product-details.html">{{p.productName}} hàng chính hãng 100%</a></h3>
+                                      <div class="product_ratings">
+                                          <ul>
+                                              <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                              <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                              <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                              <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                              <li><a href="#"><i class="ion-android-star-outline"></i></a></li>
+                                          </ul>
+                                      </div>
+                                      <div class="product_desc">
+                                          <p>{{p.description}}</p>
+                                      </div>
+                                  </div>
+                                  <div class="right_caption">
+                                      <div (click)="addTotal(p.price)"class="add_to_cart">
+                                          <button title="add to cart">Thêm vào giỏ hàng</button>
+                                      </div>
+                                      <div class="action_links editShopList">
+                                          <ul>
+                                              <li (click)="addToWishList(p.productId)" class="wishlist wishlistShopList"><button href="wishlist.html"
+                                                      title="Add to Wishlist"><i class="fa fa-heart-o"
+                                                          aria-hidden="true"></i>Yêu thích</button></li>
+                                              <!-- <li class="compare"><a href="#" title="compare"><span
+                                                          class="ion-levels"></span> Compare</a></li> -->
+                                              <li class="quick_button"><a href="#" data-bs-toggle="modal"
+                                                      data-bs-target="#modal_box" title="quick view"> <span
+                                                          class="ion-ios-search-strong"></span> Xem nhanh sản phẩm</a>
+                                              </li>
+                                          </ul>
+                                      </div>
+                                  </div>
+                              </div>
+                          </figure>
+                      </article>
+                  </div>
+              </div>
+
+              <div class="shop_toolbar t_bottom">
+                  <div class="pagination">
+                    <!-- <button [ngStyle]="{'display': currentPage == 1 ? 'none' : ''}" (click)="firstPage()"><<</button>
+                    <button [ngStyle]="{'display': currentPage == 1 ? 'none' : ''}" (click)="prevPage()">Trang trước</button>
+                    <button [ngClass]="{'active': (i+1) == currentPage}" (click)="loadPaginate(i+1)" *ngFor="let n of pages; let i = index">{{i+1}}</button>
+                    <button [ngStyle]="{'display': currentPage == totalPage ? 'none' : ''}" (click)="nextPage()">Trang sau</button>
+                    <button [ngStyle]="{'display': currentPage == totalPage ? 'none' : ''}" (click)="lastPage()">>></button> -->
+                  </div>
+              </div>
+              <!--shop toolbar end-->
+              <!--shop wrapper end-->
+          </div>
+      </div>
+  </div>
+</div>
+<!--shop  area end-->

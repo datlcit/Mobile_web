@@ -1,0 +1,47 @@
+.title{
+  margin: 30px auto;
+  color: darkred;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.add-button a{
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.search_box{
+  margin-left: 200px;
+}
+
+.input-group form{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.input-group form p{
+  font-size: 15px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.input-group input{
+  margin-left: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 2px 15px;
+  border: 3px solid #b1154a;
+}
+
+.table{
+  margin-top: 50px;
+}
+
+.td-button{
+  display: flex;
+  justify-content: space-around;
+}
+
+tbody tr td{
+  text-align: center;
+}

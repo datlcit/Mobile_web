@@ -1,0 +1,136 @@
+<div class="wrapper row-offcanvas row-offcanvas-left">
+  <div style="display: flex">
+      <div th:include="layout_admin/nav_bar:: nav_bar"></div>
+      <div class="container" style="padding: 0; position: relative">
+          <div th:include="layout_admin/navi_bar:: navi_bar"></div>
+          <div class="container row">
+              <div class="row col-sm-6"
+                   style="border: 1px darkgrey solid; border-radius: 10px; margin: 30px 0; padding: 20px;">
+                  <div class="col-sm-12">
+                      <div style="display: flex; justify-content: space-between;">
+                          <h2 class="myclass">Edit Product</h2>
+                          <div>
+                              <img style="width: 100px"/>
+                          </div>
+                      </div>
+                      <form method="post" enctype="multipart/form-data" [formGroup]="formEditProduct" (ngSubmit)="editProduct()">
+                        <div class="form-group">
+                          <label>Product ID</label>
+                          <input class="form-control" name="productId" placeholder="Enter ID" id="productId" value="" readonly formControlName="productId">
+                          <p style="color: red" *ngIf="formEditProduct.get('productId')?.errors?.['required'] && formEditProduct.get('productId')?.dirty">Vui lòng nhập ID sản phẩm</p>
+                        </div>
+
+                          <div class="form-group">
+                              <label>Product Name</label>
+                              <input class="form-control" name="productName" placeholder="Enter name" id="productName" value="" formControlName="productName">
+                              <p style="color: red" *ngIf="formEditProduct.get('productName')?.errors?.['required'] && formEditProduct.get('productName')?.dirty">Vui lòng nhập tên sản phẩm</p>
+                          </div>
+
+
+                          <div class="form-group">
+                              <label>Desciption</label>
+                              <input type="text" class="form-control" name="description" placeholder="Enter description" id="description" value="" formControlName="description">
+                              <p style="color: red" *ngIf="formEditProduct.get('description')?.errors?.['required'] && formEditProduct.get('description')?.dirty">Vui lòng nhập mô tả sản phẩm</p>
+                          </div>
+
+
+                          <div class="form-group">
+                              <label>Image</label>
+                              <input type="text" class="form-control" name="productImage" placeholder="Enter images" id="productImage" value="" formControlName="productImage">
+                              <p style="color: red" *ngIf="formEditProduct.get('productImage')?.errors?.['required'] && formEditProduct.get('productImage')?.dirty">Vui lòng nhập ảnh sản phẩm</p>
+                          </div>
+
+
+                          <div class="form-group">
+                              <label>Price</label>
+                              <input type="text" class="form-control" name="price" placeholder="Enter price" id="price" value="" formControlName="price">
+                              <p style="color: red" *ngIf="formEditProduct.get('price')?.errors?.['required'] && formEditProduct.get('price')?.dirty">Vui lòng nhập giá sản phẩm</p>
+                          </div>
+
+
+                          <div class="form-group">
+                            <label>Ram</label>
+                            <input type="text" class="form-control" name="ram" placeholder="Enter ram" id="ram" value="" formControlName="ram">
+                            <p style="color: red" *ngIf="formEditProduct.get('ram')?.errors?.['required'] && formEditProduct.get('ram')?.dirty">Vui lòng nhập ram sản phẩm</p>
+                          </div>
+
+
+                        <div class="form-group">
+                          <label>Storage</label>
+                          <input type="text" class="form-control" name="storage" placeholder="Enter storage" id="storage" value="" formControlName="storage">
+                          <p style="color: red" *ngIf="formEditProduct.get('storage')?.errors?.['required'] && formEditProduct.get('storage')?.dirty">Vui lòng nhập dung lượng sản phẩm</p>
+                        </div>
+
+
+                        <div class="form-group">
+                          <label>Color</label>
+                          <input type="text" class="form-control" name="color" placeholder="Enter color" id="color" value="" formControlName="color">
+                          <p style="color: red" *ngIf="formEditProduct.get('color')?.errors?.['required'] && formEditProduct.get('color')?.dirty">Vui lòng nhập màu sản phẩm</p>
+                        </div>
+
+
+                          <div class="form-group">
+                              <label>Quantity</label>
+                              <input type="text" class="form-control" name="quantity" placeholder="Enter quantity" id="quantity" value="" formControlName="quantity">
+                              <p style="color: red" *ngIf="formEditProduct.get('quantity')?.errors?.['required'] && formEditProduct.get('quantity')?.dirty">Vui lòng nhập số lượng sản phẩm</p>
+                          </div>
+
+                          <div class="form-group">
+                            <label>Status</label><br>
+                              <input name="status" type="radio" value="true" formControlName="status"> Enable |
+                              <input name="status" type="radio" value="false" formControlName="status"> Disable
+                          </div>
+                           <tr>
+                            <th>Category</th>
+                            <td>
+                              <select style="margin-left: 20px;" class="form-select" aria-label="Default select example"  formControlName="category">
+                                <option value="" disabled>Choose category</option>
+                                <option *ngFor="let c of categories" value="{{c.categoryId}}">{{c.categoryName}}</option>
+                              </select>
+                            </td>
+                          </tr>
+                          <br>
+                          <div class="editButton">
+                            <button [disabled]="formEditProduct.invalid" type="submit" class="btn btn-primary">Save</button>
+                            <a class="btn btn-primary" routerLink="/admin/listProducts">Display List Product</a>
+                          </div>
+                      </form>
+                  </div>
+              </div>
+              <div style="text-align: center; margin-top: 20px;" class="col-sm-6">
+                  <h2>Add Image Product</h2>
+                  <div sec:authorize="hasAnyRole('ADMIN','MANAGER')">
+                  <form method="post"
+                        style="margin: 20px 0">
+                      <tr>
+                          <td>Image Link:</td>
+                          <td><input type="text" required/></td>
+                          <td colspan="2">
+                              <button type="submit">Save</button>
+                          </td>
+                      </tr>
+                  </form>
+                  </div>
+                  <div style="text-align: center; max-height: 700px; overflow-y: scroll;">
+                      <table class="table table-bordered">
+                          <thead>
+                          <tr style="text-align: center; background-color: orange; color: #fff">
+                              <th style="text-align: center">Image</th>
+                              <th style="text-align: center">Action</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                          <tr>
+                              <td><a> <img width="30px"></a></td>
+                              <td style="text-align: center">
+                                  <a class="btn btn-danger btn-sm">Delete</a>
+                              </td>
+                          </tr>
+                          </tbody>
+                      </table>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

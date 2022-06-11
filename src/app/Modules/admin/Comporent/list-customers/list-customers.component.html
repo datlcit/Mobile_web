@@ -1,0 +1,94 @@
+<div class="wrapper row-offcanvas row-offcanvas-left">
+  <div style="display: flex">
+      <div class="container" style="padding: 0; position: relative">
+          <div class="container">
+              <h1 class="title">List Customers</h1>
+              <div style="display: flex; justify-content: space-between">
+                  <div sec:authorize="hasAnyRole('ADMIN','MANAGER')">
+                  <p>
+                      <a class="btn btn-primary" routerLink="/admin/addCustomer">ADD CUSTOMER</a>
+                  </p>
+                  </div>
+                  <div class="search_box pull-right">
+                      <div class="input-group">
+                          <form>
+                              Search: <input type="text" name="keyword" id="keyword" size="50"/>
+                          </form>
+                      </div>
+                  </div>
+              </div>
+              <table class="table table-bordered">
+                  <thead>
+                  <tr style="text-align: center">
+                      <th style="text-align: center"><a style="color: black">
+                          Id</a></th>
+                      <th style="text-align: center">Name</th>
+                      <th style="text-align: center">Phone</th>
+                      <th style="text-align: center">Address</th>
+                      <th style="text-align: center">Email</th>
+                      <th style="text-align: center">Actions</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+
+                  <tr *ngFor="let c of listCustomers">
+                      <td>{{c.customerId}}</td>
+                      <td>{{c.fullName}}</td>
+                      <td>{{c.phone}}</td>
+                      <td>{{c.address}}</td>
+                      <td>{{c.email}}</td>
+                      <thead class="editButton">
+                        <a class="btn btn-primary btn-sm"
+                          href="#" style="margin-top: 0">Detail</a>
+                        <a class="btn btn-primary btn-sm"
+                          href="#" style="margin-top: 0">Detail</a>
+                        <a class="btn btn-danger btn-sm"
+                          href="#" style="margin-top: 0">Disable</a>
+                      </thead>
+                  </tr>
+                  </tbody>
+              </table>
+              <div class="text-center">
+                  <div class="text-center">
+                      <span>Total Items: </span>
+                  </div>
+                  <!-- <nav class="pagination justify-content-center flex-wrap">
+                          <li>
+                              <a class="page-link">First</a>
+                          </li>
+                          <li>
+                              <a class="page-link">Previous</a>
+                          </li>
+                              <li class="page-item">
+                                  <a class="page-link"></a>
+                              </li>
+                                  <li class="page-item">
+                                      <a class="page-link"></a>
+                                  </li>
+                                  <li>
+                                      <a class="page-link">...</a>
+                                  </li>
+                                  <li>
+                                      <a class="page-link"></a>
+                                  </li>
+                                  <li>
+                                      <a class="page-link">...</a>
+                                  </li>
+                                  <li class="page-item">
+                                      <a class="page-link"></a>
+                                  </li>
+                                  <li>
+                                      <a class="page-link">...</a>
+                                  </li>
+                          <li>
+                              <a class="page-link">Next</a>
+                          </li>
+                          <li>
+                              <a class="page-link">Last</a>
+                          </li>
+                  </nav> -->
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

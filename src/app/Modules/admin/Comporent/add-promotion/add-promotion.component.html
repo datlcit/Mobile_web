@@ -1,0 +1,70 @@
+<div class="wrapper row-offcanvas row-offcanvas-left">
+  <div style="display: flex">
+      <div th:include="layout_admin/nav_bar:: nav_bar"></div>
+      <div class="container" style="padding: 0; position: relative">
+          <div th:include="layout_admin/navi_bar:: navi_bar"></div>
+          <div class="container">
+              <div class="row"
+                   style="border: 1px darkgrey solid; border-radius: 10px; width: 50%; margin: 0 auto; padding: 20px;">
+                  <div class="col-sm-12">
+                      <h2 class="myclass">Add Promotion</h2>
+                      <form method="post" enctype="multipart/form-data" [formGroup]="formAddPromotion" (ngSubmit)="addPromotion()">
+                        <input type="hidden">
+                        <div class="form-group">
+                            <label>Promotion Name</label>
+                            <input type="text" class="form-control"
+                                   name="name" placeholder="Enter name" id="name" value="" formControlName="promotionName">
+                        </div>
+                        <div class="form-group">
+                            <label>Start date</label>
+                            <input type="date" class="form-control"
+                                   name="startTime" placeholder="Enter Start date" id="startTime" value="" formControlName="startTime">
+                        </div>
+                        <div class="form-group">
+                            <label>End date</label>
+                            <input type="date" class="form-control"
+                                   name="endTime" placeholder="Enter End date" id="endTime" value="" formControlName="endTime">
+                        </div>
+                        <div class="form-group">
+                            <label>Apply day</label>
+                            <input type="text" class="form-control"
+                                   name="applyDay" placeholder="Enter apply day" id="applyDay" value="" formControlName="applyDay">
+                        </div>
+                        <div class="form-group">
+                            <label>Quantity</label>
+                            <input type="text" class="form-control"
+                                   title="Must enter from 0 to 100"
+                                   name="quantity" placeholder="Enter quantity" id="quantity" value="" required formControlName="quantity">
+                        </div>
+                        <div class="form-group">
+                            <label>Max discount</label>
+                            <input type="text" class="form-control"
+                                   name="maxDiscount" placeholder="Enter maxDiscount" id="maxDiscount" value="" required formControlName="maxDiscount">
+                        </div>
+                        <div class="form-group">
+                            <label>Remain Apply</label>
+                            <input type="text" class="form-control"
+                                   name="remainApply" placeholder="Enter remainApply" id="remainApply" value="" required formControlName="remainApply">
+                        </div>
+                        <div class="form-group">
+                            <label>Status</label> <br>
+                            <input name="status" type="radio" value="true" required formControlName="status"> Enable |
+                            <input name="status" type="radio" value="false" required formControlName="status"> Disable
+                        </div>
+                        <div class="form-group">
+                            <label>Code</label>
+                            <input type="text" class="form-control"
+                                   name="code" placeholder="Enter code" id="code" value="" required formControlName="code">
+                        </div>
+                        <br>
+                        <div class="editButton">
+                          <button [disabled]="formAddPromotion.invalid" type="submit" class="btn btn-primary">Save</button>
+                          <a class="btn btn-primary" href="/admin/listPromotions">Display List Promotion</a>
+                        </div>
+                    </form>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

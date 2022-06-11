@@ -1,0 +1,8 @@
+.container{
+  padding-top: 30px;
+}
+
+.editButton{
+  display: flex;
+  justify-content: space-around;
+}
