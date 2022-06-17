@@ -38,9 +38,8 @@ export class UserAdminService {
       return this.http.delete(this.base_url + '/' + id);
     }
 
-    login(formLogin: any): Observable<any> {
+    userLogin(formLogin: any): Observable<any> {
       return this.http.post(this.base_url + '/token', formLogin);
-
     }
 
     getUserByUserName(userName:any): Observable<any>{

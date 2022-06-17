@@ -16,6 +16,16 @@ export class HeaderComponent implements OnInit {
   total: number = 0;
   ngOnInit(): void {
     this.calTotal();
+    this.loadCurrentUser();
+  }
+
+  currentUser: string = '';
+
+  loadCurrentUser(){
+    if(localStorage['userName'] != null){
+      this.currentUser = localStorage['userName']
+      console.log(this.currentUser)
+    }
   }
 
   token: any;

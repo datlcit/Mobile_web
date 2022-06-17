@@ -13,9 +13,18 @@
                   </div>
                   <div class="col-lg-6 col-md-6">
                       <div class="top_right text-right">
-                          <ul>
+                          <ul class="">
 
-                              <li><a routerLink="/login"> Đăng nhập </a></li>
+                              <li>
+                                <a routerLink="/login" *ngIf="currentUser == ''"> Đăng nhập</a>
+                                <a style="text-transform: lowercase;" routerLink="/login" *ngIf="currentUser != ''"> {{currentUser}}</a>
+                                <!-- <ul class="menu-con">
+                                  <li>
+                                      <a href="">Trang người dùng</a>
+                                      <a href="">Đăng xuất</a>
+                                  </li>
+                                </ul> -->
+                              </li>
                               <li><a routerLink="/checkout"> Thanh toán </a></li>
                           </ul>
                       </div>
