@@ -13,17 +13,14 @@
                   </div>
                   <div class="col-lg-6 col-md-6">
                       <div class="top_right text-right">
-                          <ul class="">
-
-                              <li>
+                          <ul class="ul-ngang">
+                              <li style="display: flex; align-items: center;">
                                 <a routerLink="/login" *ngIf="currentUser == ''"> Đăng nhập</a>
-                                <a style="text-transform: lowercase;" routerLink="/login" *ngIf="currentUser != ''"> {{currentUser}}</a>
-                                <!-- <ul class="menu-con">
-                                  <li>
-                                      <a href="">Trang người dùng</a>
-                                      <a href="">Đăng xuất</a>
-                                  </li>
-                                </ul> -->
+                                <p style="text-transform: lowercase; margin: 0" *ngIf="currentUser != ''"> {{currentUser}}</p>
+                                <ul *ngIf="currentUser != ''" class="menu-con">
+                                  <li> <a href="">Tài khoản của tôi</a> </li>
+                                  <li> <a href="">Đăng xuất</a> </li>
+                                </ul>
                               </li>
                               <li><a routerLink="/checkout"> Thanh toán </a></li>
                           </ul>
