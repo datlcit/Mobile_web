@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CustomerAdminService } from '../../adminServices/customer-admin.service';
 
 @Component({
@@ -15,6 +15,7 @@ export class AddCustomerComponent implements OnInit {
     private fb: FormBuilder,
     private route: ActivatedRoute,
     private customerAdminService: CustomerAdminService,
+    private router: Router,
     private http: HttpClient
   ) { }
 
@@ -22,14 +23,12 @@ export class AddCustomerComponent implements OnInit {
   }
 
   formAddCustomer = this.fb.group({
-    customerId: ['', Validators.required],
     fullName: ['', Validators.required],
-    password: ['', Validators.required],
     phone: ['', Validators.required],
     address: ['', Validators.required],
     email: ['', Validators.required],
-    avatar: ['', Validators.required],
-    status: ['', Validators.required]
+    gender: ['', Validators.required],
+    birthday: ['', Validators.required]
   });
 
   submitted = false;
@@ -37,6 +36,7 @@ export class AddCustomerComponent implements OnInit {
   addCustomer(){
     this.customerAdminService.add(this.formAddCustomer.value).subscribe(res=>{
       console.log(this.formAddCustomer.value);
+      this.router.navigateByUrl('/admin/listCustomers')
     })
   }
 

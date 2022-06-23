@@ -19,7 +19,7 @@
                                 <p style="text-transform: lowercase; margin: 0" *ngIf="currentUser != ''"> {{currentUser}}</p>
                                 <ul *ngIf="currentUser != ''" class="menu-con">
                                   <li> <a href="">Tài khoản của tôi</a> </li>
-                                  <li> <a href="">Đăng xuất</a> </li>
+                                  <li> <a (click)="logOut()" href="">Đăng xuất</a> </li>
                                 </ul>
                               </li>
                               <li><a routerLink="/checkout"> Thanh toán </a></li>

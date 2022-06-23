@@ -28,15 +28,6 @@ export class HeaderComponent implements OnInit {
     }
   }
 
-  token: any;
-
-  loadToken(){
-    this.userService.get().subscribe(res =>{
-      this.token = res;
-      console.log(this.token)
-    })
-  }
-
   calTotal(){
     for(let c of this.dataCart){
       if(c.quantity == 1){
@@ -51,6 +42,11 @@ export class HeaderComponent implements OnInit {
     }
     console.log(this.countCart)
     console.log(this.total)
+  }
+
+  //Nút đăng xuất
+  logOut(){
+    localStorage.removeItem('userName');
   }
 
 

@@ -18,7 +18,6 @@ export class ListCustomersComponent implements OnInit {
   loadCustomers(){
     this.customerAdminService.get().subscribe(res =>{
       this.listCustomers = res;
-      console.log(this.listCustomers);
     })
   }
 
