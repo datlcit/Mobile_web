@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CartComponent } from '../cart/cart.component';
 import { HomeComponent } from '../home/home.component';
+import { ProductDetailComponent } from '../product-detail/product-detail.component';
 import { StoreComponent } from '../store/store.component';
 
 @Component({
@@ -45,6 +46,21 @@ export class UserInterfaceComponent implements OnInit {
     }
   }
 
+  addToCartFromProDetail(componentRef:any) {
+    if(componentRef instanceof ProductDetailComponent) {
+      componentRef.clickBuy.subscribe((productId) => {
+        this.data = localStorage.getItem('carts') ? JSON.parse(localStorage.getItem('carts')!) : [];
+        for(let c of this.data){
+          if(c.product.productId == productId){
+            if(c.quantity == 1){
+              this.countPro++;
+            }
+          }
+        }
+      })
+    }
+  }
+
   addTotalFromHome(componentRef:any) {
     if(componentRef instanceof HomeComponent) {
       componentRef.clickTotal.subscribe((price) => {
@@ -55,6 +71,15 @@ export class UserInterfaceComponent implements OnInit {
 
   addTotalFromShop(componentRef:any) {
     if(componentRef instanceof StoreComponent) {
+      componentRef.clickTotal.subscribe((price) => {
+        this.proPrice = this.proPrice + price
+        console.log(this.proPrice);
+      })
+    }
+  }
+
+  addTotalFromProDetail(componentRef:any) {
+    if(componentRef instanceof ProductDetailComponent) {
       componentRef.clickTotal.subscribe((price) => {
         this.proPrice = this.proPrice + price
         console.log(this.proPrice);

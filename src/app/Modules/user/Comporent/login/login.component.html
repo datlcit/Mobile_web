@@ -34,10 +34,6 @@
                           <input type="password" class="form-control" name="password" placeholder="Enter password" id="password" formControlName="password">
                           <p style="color: red" *ngIf="formLogin.get('password')?.errors?.['required'] && formLogin.get('password')?.dirty">Vui lòng nhập mật khẩu</p>
                         <div class="login_submit">
-                          <label for="remember">
-                              <input id="remember" type="checkbox">
-                              Nhớ tài khoản của tôi
-                          </label>
                           <button [disabled]="formLogin.invalid" >Đăng nhập</button>
                         </div>
                       </div>
@@ -50,17 +46,17 @@
           <div class="col-lg-6 col-md-6">
               <div class="account_form register">
                   <h2>Đăng ký</h2>
-                  <form action="#">
+                  <form method="post" enctype="multipart/form-data" [formGroup]="formRegister" (ngSubmit)="register()">
                       <p>
                         <label>Tên đăng nhập <span>*</span></label>
-                        <input type="text" required>
-                      </p>
+                          <input type="text" class="form-control" name="userName" placeholder="Enter username" id="userNameForUR" formControlName="userName">
+                          <p style="color: red" *ngIf="formRegister.get('userName')?.errors?.['required'] && formRegister.get('userName')?.dirty">Vui lòng nhập tên đăng nhập</p>
                       <p>
-                          <label>Mật khẩu <span>*</span></label>
-                          <input type="password" required>
-                      </p>
+                        <label>Mật khẩu <span>*</span></label>
+                          <input type="password" class="form-control" name="password" placeholder="Enter password" id="passwordForUR" formControlName="password">
+                          <p style="color: red" *ngIf="formRegister.get('password')?.errors?.['required'] && formRegister.get('password')?.dirty">Vui lòng nhập mật khẩu</p>
                       <div class="login_submit">
-                          <button type="submit">Đăng ký</button>
+                          <button [disabled]="formRegister.invalid" type="submit">Đăng ký</button>
                       </div>
                   </form>
               </div>

@@ -21,38 +21,35 @@ export class ProductDetailComponent implements OnInit {
     });
 
     this.getProduct();
+    this.getDataHasOneImg();
 
   }
+  //function đẩy đối tượng vào trang
   getProduct(){
     const productId = this.router.snapshot.params['productId'];
     this.productService.findById(productId).subscribe(res => {
       this.dataProduct = res;
       this.dataProduct.productImage = this.dataProduct.productImage.split(" ");
       this.dataProduct.color = this.dataProduct.color.split(";");
-      console.log(this.dataProduct.productImage);
+      console.log(this.dataProduct);
       console.log(this.dataProduct.color);
     });
   }
 
-
-  product:any ={
-    pId: 'P101',
-    pName: 'Iphone 12',
-    img1: 'assets/img/product/iphone/iphone_12_series/iphone_12_do.png',
-    importPrice: 12000000,
-    oldPrice: 16390000,
-    oldPriceView: '16,390,000',
-    currentPrice: 16090000,
-    currentPriceView: '16,090,000',
-    pStorage: '64 GB',
-    pColor: '',
-    pDescribe: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit eligendi ut ullam dolore. Adipisci deserunt excepturi cupiditate exercitationem architecto aperiam, repellat, autem impedit numquam id reiciendis, quas recusandae perferendis unde!',
-    pRAM: '4 GB',
-    producer: 'Apple',
-    pAmount: 1,
-    categoryId: 1,
-    pStatus: true
+  dataHasOneImg: any = null;
+  // function tạo đối tượng chỉ có 1 ảnh để gửi lên cart
+  getDataHasOneImg(){
+    const productId = this.router.snapshot.params['productId'];
+    this.productService.findById(productId).subscribe(res2 => {
+      this.dataHasOneImg = res2;
+      this.dataHasOneImg.productImage = this.dataHasOneImg.productImage.split(" ");
+      this.dataHasOneImg.productImage = this.dataHasOneImg.productImage[0]
+      this.dataHasOneImg.color = this.dataHasOneImg.color.split(";");
+      this.dataHasOneImg.color = this.dataHasOneImg.color[0]
+      console.log(this.dataHasOneImg);
+    });
   }
+
 
   chooseColor(c: string): void{
     this.dataProduct.color =  this.dataProduct.color.toString();
@@ -62,19 +59,50 @@ export class ProductDetailComponent implements OnInit {
     console.log(this.dataProduct);
   }
 
-  proAmount(pAmount: number): void {
-    this.product.pAmount++;
-    console.log(this.product.pAmount);
+  proAmount(quantity: number): void {
+    quantity++;
+    console.log(quantity);
   }
 
   @Output() clickBuy: EventEmitter<any> = new EventEmitter();
-  addPro(pId: string): void {
-    this.clickBuy.emit(pId);
+
+  @Output() clickTotal: EventEmitter<any> = new EventEmitter();
+  addTotal(current_price: number): void {
+    this.clickTotal.emit(current_price);
   }
 
   @Output() clickWithlist: EventEmitter<any> = new EventEmitter();
   addToWishList(pId: string): void {
     this.clickWithlist.emit(pId);
   }
+
+  buy(product: any) {
+    // Lấy dữ liệu giỏ hàng trong storage
+    let carts = localStorage.getItem('carts') ? JSON.parse(localStorage.getItem('carts')!) : [];
+
+    const itemCart = {
+      product: product,
+      quantity: 1
+    };
+
+    // Kiểm tra xem sản phẩm có trong giỏ chưa
+    let flag = false;
+    carts = carts.map((x: any) =>{
+      if(x.product.productId == product.productId){
+        x.quantity += 1;
+        flag = true;
+      }
+      return x;
+    })
+
+    if(!flag){
+      carts.push(itemCart);
+    }
+
+    //Lưu giỏ vào localStorage
+    localStorage.setItem('carts', JSON.stringify(carts));
+
+    this.clickBuy.emit(product.productId);
+}
 
 }

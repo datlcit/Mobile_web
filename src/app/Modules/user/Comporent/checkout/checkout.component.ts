@@ -20,7 +20,7 @@ export class CheckoutComponent implements OnInit {
     email: ['', Validators.required],
   });
 
-  csubmitted = false;
+  submitted = false;
   constructor(private fb: FormBuilder,
     private route: ActivatedRoute,
      private customerService: CustomerUserService,

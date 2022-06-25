@@ -1,3 +1,3 @@
 <app-header [countPro]="countPro" [dataCart]="data" [proPrice]="proPrice" [countWishList]="countWishList"></app-header>
-<router-outlet  (activate)="addToCart($event)" (activate)="addToWishList($event)" (activate)="addToCartFromShop($event)" (activate)="addToWishListFromShop($event)" (activate)="addTotalFromHome($event)" (activate)="addTotalFromShop($event)"></router-outlet>
+<router-outlet  (activate)="addToCart($event)" (activate)="addToWishList($event)" (activate)="addToCartFromShop($event)" (activate)="addToCartFromProDetail($event)" (activate)="addToWishListFromShop($event)" (activate)="addTotalFromHome($event)" (activate)="addTotalFromShop($event)" (activate)="addTotalFromProDetail($event)"></router-outlet>
 <app-footer></app-footer>

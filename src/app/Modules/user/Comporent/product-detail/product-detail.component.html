@@ -79,12 +79,12 @@
 
                       </div>
                       <div class="product_variant quantity">
-                          <a (click)="addPro(product.pId)" class="button">Thêm vào giỏ hàng</a>
+                          <a (click)="buy(dataHasOneImg)" (click)="addTotal(dataProduct.price)" class="button">Thêm vào giỏ hàng</a>
 
                       </div>
                       <div class=" product_d_action">
                           <ul>
-                              <li><a (click)="addToWishList(product.pId)" title="Add to wishlist">+ Yêu thích</a></li>
+                              <li><a (click)="addToWishList(dataProduct.productId)" title="Add to wishlist">+ Yêu thích</a></li>
                           </ul>
                       </div>
 
