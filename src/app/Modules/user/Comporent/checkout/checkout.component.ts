@@ -69,15 +69,18 @@ export class CheckoutComponent implements OnInit {
 
         for(let c of this.data){
           let p = c.product;
+          console.log(p)
             this.orderDetailService.add(
               {
                 order: { orderId: this.orderAdded.orderId},
                 product: { productId: p.productId},
+                color: p.color,
                 quantity: c.quantity,
                 price: p.price
               }
             ).subscribe(res3=>{
               this.orderDetailAdded = res3;
+              console.log(this.orderDetailAdded)
             })
         }
 
@@ -85,7 +88,7 @@ export class CheckoutComponent implements OnInit {
 
         // this.router.navigateByUrl('/admin/listOrders')
       })
-      this.router.navigate(['congratulation']);
+      // this.router.navigate(['congratulation']);
     })
   }
 
@@ -97,7 +100,9 @@ export class CheckoutComponent implements OnInit {
   subtotal: number = 0;
   loadTotal(){
     for(let c of this.data){
-      this.subtotal += c.product.price * c.quantity;
+      console.log(c.product.price)
+      console.log(c.quantity)
+      this.subtotal += (c.product.price * c.quantity);
     }
   }
 

@@ -1,0 +1,11 @@
+.sort-button{
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.sort-button:hover{
+  padding: 2px 5px;
+  background-color: blue;
+  color: #fff;
+  border-radius: 5px;
+}

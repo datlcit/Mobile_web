@@ -81,20 +81,17 @@
 
                                   <!--mini cart-->
                                    <div style="overflow: scroll;" class="mini_cart">
-                                      <div class="cart_item" *ngFor="let c of dataCart">
+                                      <div class="cart_item" *ngFor="let c of dataCart; let i = index;">
                                           <div class="cart_img">
                                               <a href="#"><img src="{{c.product.productImage}}" alt=""></a>
                                           </div>
                                           <div class="cart_info">
                                               <a href="#">{{c.product.productName}}</a>
+                                              <p style="font-size: 13px; margin: 0">Màu: <span>{{c.product.color}}</span></p>
                                               <p>SL: {{c.quantity}} X <span> {{c.product.price}} </span></p>
                                           </div>
                                       </div>
                                       <div class="mini_cart_table">
-                                          <div class="cart_total">
-                                              <span>Tổng phụ:</span>
-                                              <span class="price">{{total+proPrice}} VNĐ</span>
-                                          </div>
                                           <div class="cart_total mt-10">
                                               <span>Tổng:</span>
                                               <span class="price">{{total+proPrice}} VNĐ</span>
@@ -103,10 +100,10 @@
 
                                       <div class="mini_cart_footer">
                                           <div class="cart_button">
-                                              <a routerLink="/cart">View cart</a>
+                                              <a href="/cart">View cart</a>
                                           </div>
                                           <div class="cart_button">
-                                              <a routerLink="/checkout">Checkout</a>
+                                              <a href="/checkout">Checkout</a>
                                           </div>
 
                                       </div>
@@ -133,53 +130,53 @@
                           </div>
                           <div class="categories_menu_toggle">
                               <ul>
-                                  <li class="menu_item_children"><a href="#">Iphone <i
+                                  <li class="menu_item_children"><a href="javascript:void(0)">Iphone <i
                                               class="fa fa-angle-right"></i></a>
                                       <ul class="categories_mega_menu column_2">
-                                          <li class="menu_item_children"><a href="#">Iphone 13 Series</a>
+                                          <li class="menu_item_children"><a href="javascript:void(0)">Iphone 13 Series</a>
                                               <ul class="categorie_sub_menu">
-                                                  <li><a href="#">Iphone 13</a></li>
-                                                  <li><a href="#">Iphone 13 Pro Max</a></li>
+                                                  <li><a (click)="phoneDetail(iphone_13)" href="#">{{iphone_13}}</a></li>
+                                                  <li><a href="#">{{iphone_13_pro_max}}</a></li>
                                               </ul>
                                           </li>
-                                          <li class="menu_item_children"><a href="#">Iphone 12 Series</a>
+                                          <li class="menu_item_children"><a href="javascript:void(0)">Iphone 12 Series</a>
                                               <ul class="categorie_sub_menu">
-                                                  <li><a href="#">Iphone 12</a></li>
-                                                  <li><a href="#">Iphone 12 Mini</a></li>
+                                                  <li><a href="#">{{iphone_12}}</a></li>
+                                                  <li><a href="#">{{iphone_12_mini}}</a></li>
                                               </ul>
                                           </li>
                                       </ul>
                                   </li>
-                                  <li class="menu_item_children"><a href="#"> Samsung <i
+                                  <li class="menu_item_children"><a href="javascript:void(0)"> Samsung <i
                                               class="fa fa-angle-right"></i></a>
                                       <ul class="categories_mega_menu column_2">
-                                          <li class="menu_item_children"><a href="#">Samsung Galaxy S22 Series</a>
+                                          <li class="menu_item_children"><a href="javascript:void(0)">Samsung Galaxy S22 Series</a>
                                               <ul class="categorie_sub_menu">
-                                                  <li><a href="#">Samsung Galaxy S22</a></li>
-                                                  <li><a href="#">Samsung Galaxy S22 Ultra</a></li>
+                                                  <li><a href="#">{{samsung_galaxy_s22}}</a></li>
+                                                  <li><a href="#">{{samsung_galaxy_s22_ultra}}</a></li>
                                               </ul>
                                           </li>
-                                          <li class="menu_item_children"><a href="#">Samsung Galaxy Z Series</a>
+                                          <li class="menu_item_children"><a href="javascript:void(0)">Samsung Galaxy Z Series</a>
                                               <ul class="categorie_sub_menu">
-                                                  <li><a href="#">Samsung Galaxy Z Flip3 5G</a></li>
-                                                  <li><a href="#">Samsung Galaxy Z Fold3 5G</a></li>
+                                                  <li><a href="#">{{samsung_galaxy_z_flip3_5g}}</a></li>
+                                                  <li><a href="#">{{samsung_galaxy_z_fold3_5g}}</a></li>
                                               </ul>
                                           </li>
                                       </ul>
                                   </li>
-                                  <li class="menu_item_children"><a href="#">Xiaomi <i
+                                  <li class="menu_item_children"><a href="javascript:void(0)">Xiaomi <i
                                               class="fa fa-angle-right"></i></a>
                                       <ul class="categories_mega_menu column_2">
-                                          <li class="menu_item_children"><a href="#">Xiaomi 12 Series</a>
+                                          <li class="menu_item_children"><a href="javascript:void(0)">Xiaomi 12 Series</a>
                                               <ul class="categorie_sub_menu">
-                                                  <li><a href="#">Xiaomi 12</a></li>
-                                                  <li><a href="#">Xiaomi 12 Pro</a></li>
+                                                  <li><a href="#">{{xiaomi_12}}</a></li>
+                                                  <li><a href="#">{{xiaomi_12_pro}}</a></li>
                                               </ul>
                                           </li>
-                                          <li class="menu_item_children"><a href="#">Redmi Note 11 Series</a>
+                                          <li class="menu_item_children"><a href="javascript:void(0)">Redmi Note 11 Series</a>
                                               <ul class="categorie_sub_menu">
-                                                  <li><a href="#">Redmi Note 11</a></li>
-                                                  <li><a href="#">Redmi Note 11 Pro</a></li>
+                                                  <li><a href="#">{{redmi_note_11}}</a></li>
+                                                  <li><a href="#">{{redmi_note_11_pro}}</a></li>
                                               </ul>
                                           </li>
                                       </ul>

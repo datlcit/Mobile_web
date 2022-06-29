@@ -28,6 +28,7 @@
                                       <th> Mã đơn hàng </th>
                                       <th >Mã chi tiết đơn hàng</th>
                                       <th >Tên sản phẩm</th>
+                                      <th >Màu</th>
                                       <th >Số lượng</th>
                                       <th >Giá tiền</th>
                                       <th >Ngày tạo</th>
@@ -38,12 +39,13 @@
                                       <td>{{od.order.orderId}}</td>
                                       <td>{{od.orderDetailId}}</td>
                                       <td>{{od.product.productName}}</td>
+                                      <td>{{od.color}}</td>
                                       <td>{{od.quantity}}</td>
                                       <td>{{od.price}} VNĐ</td>
                                       <td>{{od.createAt}}</td>
                                   </tr>
-                                  <tr><td colspan="6" style="text-align: center; color: blue">Phí vận chuyển: 50000 VNĐ</td></tr>
-                                  <tr><td colspan="6" style="text-align: center; color: red">TỔNG CỘNG: {{total}} VNĐ</td></tr>
+                                  <tr><td colspan="7" style="text-align: center; color: blue">Phí vận chuyển: 50000 VNĐ</td></tr>
+                                  <tr><td colspan="7" style="text-align: center; color: red">TỔNG CỘNG: {{total}} VNĐ</td></tr>
                               </tbody>
                           </table>
                       </div>

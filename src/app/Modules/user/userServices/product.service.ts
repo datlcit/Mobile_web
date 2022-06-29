@@ -29,4 +29,24 @@ export class ProductService {
     remove(id:any): Observable<any>{
       return this.http.delete(this.base_url + '/' + id);
     }
+
+    asc(): Observable<any>{
+      return this.http.get(this.base_url + '/asc');
+    }
+
+    desc(): Observable<any>{
+      return this.http.get(this.base_url + '/desc');
+    }
+
+    ascName(): Observable<any>{
+      return this.http.get(this.base_url + '/ascName');
+    }
+
+    descName(): Observable<any>{
+      return this.http.get(this.base_url + '/descName');
+    }
+
+    rangeProductByPrice(lowCost:any, highCost:any): Observable<any>{
+      return this.http.get(this.base_url + '/range', lowCost, highCost);
+    }
 }

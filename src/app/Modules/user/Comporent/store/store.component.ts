@@ -16,19 +16,28 @@ export class StoreComponent implements OnInit {
     // });
     this.lazyLoad.loadScript('assets/js/main.js').subscribe(_ => {
     });
-    this.loadProducts();
 
-    //this.loadPaginate(1);
+    this.loadProducts();
   }
   shop_product: Array<any> = [];
   img: Array<any> = [];
   loadProducts(){
     this.service.get().subscribe(res =>{
+      //Lấy các sản phẩm ra
       this.shop_product = res;
       for(let i=0;i<this.shop_product.length;i++){
         this.img = this.shop_product[i].productImage.split(" ");
         this.shop_product[i].productImage = this.img[0];
       }
+      // //Phân trang
+      // // Tính tổng số trang
+      // this.totalPage = Math.ceil(this.shop_product.length / this.pageSize);
+      // this.pages = new Array(this.totalPage);
+      // // Lấy ra số bản ghi của trang hiện tại
+      // let start = (page - 1) * this.pageSize;
+      // let end = start + this.pageSize;
+      // this.pageData = this.shop_product.slice(start, end);
+      // this.currentPage = page;
     })
   }
 
@@ -87,36 +96,81 @@ export class StoreComponent implements OnInit {
   // currentPage: number = 1;
   // pages: any[] = [];
 
-  // loadPaginate(page: number){
-  //   // Tính tổng số trang
-  //   this.totalPage = Math.ceil(this.shop_product.length / this.pageSize);
-  //   this.pages = new Array(this.totalPage);
-  //   // Lấy ra số bản ghi của trang hiện tại
-  //   let start = (page - 1) * this.pageSize;
-  //   let end = start + this.pageSize;
-  //   this.pageData = this.shop_product.slice(start, end);
-  //   this.currentPage = page;
-  // }
-
   // prevPage(): void {
   //   this.currentPage--;
-  //   this.loadPaginate(this.currentPage);
+  //   this.loadProducts(this.currentPage);
   // }
 
   // nextPage(): void {
   //   this.currentPage++;
-  //   this.loadPaginate(this.currentPage);
+  //   this.loadProducts(this.currentPage);
   // }
 
   // firstPage(): void {
   //   this.currentPage = 1;
-  //   this.loadPaginate(this.currentPage);
+  //   this.loadProducts(this.currentPage);
   // }
 
   // lastPage(): void {
   //   this.currentPage = this.totalPage;
-  //   this.loadPaginate(this.currentPage);
+  //   this.loadProducts(this.currentPage);
   // }
 
+  ascButton(){
+    this.service.asc().subscribe(res =>{
+      //Lấy các sản phẩm ra
+      this.shop_product = res;
+      for(let i=0;i<this.shop_product.length;i++){
+        this.img = this.shop_product[i].productImage.split(" ");
+        this.shop_product[i].productImage = this.img[0];
+      }
+    })
+  }
+
+  descButton(){
+    this.service.desc().subscribe(res =>{
+      //Lấy các sản phẩm ra
+      this.shop_product = res;
+      for(let i=0;i<this.shop_product.length;i++){
+        this.img = this.shop_product[i].productImage.split(" ");
+        this.shop_product[i].productImage = this.img[0];
+      }
+    })
+  }
+
+  ascNameButton(){
+    this.service.ascName().subscribe(res =>{
+      //Lấy các sản phẩm ra
+      this.shop_product = res;
+      for(let i=0;i<this.shop_product.length;i++){
+        this.img = this.shop_product[i].productImage.split(" ");
+        this.shop_product[i].productImage = this.img[0];
+      }
+    })
+  }
+
+  descNameButton(){
+    this.service.descName().subscribe(res =>{
+      //Lấy các sản phẩm ra
+      this.shop_product = res;
+      for(let i=0;i<this.shop_product.length;i++){
+        this.img = this.shop_product[i].productImage.split(" ");
+        this.shop_product[i].productImage = this.img[0];
+      }
+    })
+  }
+
+  lowCost: number = 0;
+  highCost: number = 10000000;
+  rangeProduct(){
+    this.service.rangeProductByPrice(this.lowCost, this.highCost).subscribe(res =>{
+      //Lấy các sản phẩm ra
+      this.shop_product = res;
+      for(let i=0;i<this.shop_product.length;i++){
+        this.img = this.shop_product[i].productImage.split(" ");
+        this.shop_product[i].productImage = this.img[0];
+      }
+    })
+  }
 
 }

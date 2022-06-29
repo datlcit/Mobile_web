@@ -22,8 +22,9 @@ export class OrderDetailComponent implements OnInit {
       this.listOrderDetails = res;
       console.log(this.listOrderDetails)
       for(let od of this.listOrderDetails){
-        this.total += od.price;
+        this.total += od.price*od.quantity;
       }
+      this.total += 50000;
     })
   }
 

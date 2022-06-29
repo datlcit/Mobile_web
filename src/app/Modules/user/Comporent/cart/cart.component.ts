@@ -20,6 +20,7 @@ export class CartComponent implements OnInit {
 
   subtotal: number = 0;
   loadTotal(){
+    this.subtotal = 0;
     for(let c of this.data){
       this.subtotal += c.product.price * c.quantity;
     }

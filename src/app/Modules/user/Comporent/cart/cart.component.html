@@ -29,6 +29,7 @@
                                       <th class="product_thumb">Image</th>
                                       <th class="product_name">Product</th>
                                       <th class="product-price">Price</th>
+                                      <th class="product-color">Color</th>
                                       <th class="product_quantity">Quantity</th>
                                       <th class="product_total">Total</th>
                                   </tr>
@@ -37,7 +38,7 @@
 
                                   <tr *ngFor="let c of data; let i = index">
 
-                                      <td (click)="deleteCart(i)" class="product_remove"><a><i class="fa fa-trash-o"></i></a>
+                                      <td class="product_remove"><a><i (click)="deleteCart(i)" class="fa fa-trash-o"></i></a>
                                       </td>
                                       <td class="product_thumb">
                                         <a href="#">
@@ -46,10 +47,11 @@
                                       </td>
                                       <td class="product_name"><a href="#">{{c.product.productName}}</a></td>
                                       <td class="product-price">{{c.product.price}}</td>
+                                      <td class="product-color">{{c.product.color}}</td>
                                       <td class="product_quantity">
                                         <form>
                                           <label>Quantity</label>
-                                            <input type="number" (change)="updateCart()"  [(ngModel)]="c.quantity"  name="quantity" />
+                                            <input (click)="loadTotal()" min="1" type="number" (change)="updateCart()"  [(ngModel)]="c.quantity"  name="quantity" />
                                         </form>
                                       </td>
                                       <td class="product_total">{{c.product.price * c.quantity}} VNĐ</td>

@@ -69,7 +69,7 @@
                                 </thead>
                                 <tbody>
                                     <tr *ngFor="let c of data">
-                                        <td> {{c.product.productName}} <strong> × {{c.quantity}}</strong></td>
+                                        <td> {{c.product.productName}} - {{c.product.color}} <strong> × {{c.quantity}}</strong></td>
                                         <td> {{c.product.price * c.quantity}} VNĐ</td>
                                     </tr>
                                 </tbody>

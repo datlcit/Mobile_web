@@ -52,19 +52,14 @@ export class ProductDetailComponent implements OnInit {
 
 
   chooseColor(c: string): void{
-    this.dataProduct.color =  this.dataProduct.color.toString();
-    this.dataProduct.color = c;
-    // this.dataProduct.color = 'hello'
-    // this.dataProduct.color.toString() = c;
-    console.log(this.dataProduct);
+    this.dataHasOneImg.color =  this.dataHasOneImg.color.toString();
+    this.dataHasOneImg.color = c;
+    console.log(this.dataHasOneImg);
   }
 
-  proAmount(quantity: number): void {
-    quantity++;
-    console.log(quantity);
-  }
 
   @Output() clickBuy: EventEmitter<any> = new EventEmitter();
+  @Output() clickBuy2: EventEmitter<any> = new EventEmitter();
 
   @Output() clickTotal: EventEmitter<any> = new EventEmitter();
   addTotal(current_price: number): void {
@@ -88,7 +83,7 @@ export class ProductDetailComponent implements OnInit {
     // Kiểm tra xem sản phẩm có trong giỏ chưa
     let flag = false;
     carts = carts.map((x: any) =>{
-      if(x.product.productId == product.productId){
+      if(x.product.productId == product.productId && x.product.color == product.color){
         x.quantity += 1;
         flag = true;
       }
@@ -103,6 +98,8 @@ export class ProductDetailComponent implements OnInit {
     localStorage.setItem('carts', JSON.stringify(carts));
 
     this.clickBuy.emit(product.productId);
+    this.clickBuy2.emit(product.color);
+    console.log(product.color)
 }
 
 }

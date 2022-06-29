@@ -17,7 +17,6 @@ export class UserInterfaceComponent implements OnInit {
   ngOnInit(): void {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
     this.data = localStorage.getItem('carts') ? JSON.parse(localStorage.getItem('carts')!) : [];
-    console.log(this.data)
   }
 
   countPro: number = 0;
@@ -48,18 +47,37 @@ export class UserInterfaceComponent implements OnInit {
 
   addToCartFromProDetail(componentRef:any) {
     if(componentRef instanceof ProductDetailComponent) {
-      componentRef.clickBuy.subscribe((productId) => {
-        this.data = localStorage.getItem('carts') ? JSON.parse(localStorage.getItem('carts')!) : [];
-        for(let c of this.data){
-          if(c.product.productId == productId){
-            if(c.quantity == 1){
-              this.countPro++;
-            }
-          }
+      componentRef.clickBuy.subscribe((productId: any) => {
+        if(componentRef instanceof ProductDetailComponent) {
+              componentRef.clickBuy2.subscribe((color: any) => {
+                this.data = localStorage.getItem('carts') ? JSON.parse(localStorage.getItem('carts')!) : [];
+                for(let c of this.data){
+                  if(c.product.productId == productId && c.product.color == color && c.quantity == 1){
+
+                    this.countPro++;
+                    break;
+                  }
+                }
+          })
         }
       })
     }
   }
+
+  // addToCartFromProDetail(componentRef:any) {
+  //   if(componentRef instanceof ProductDetailComponent) {
+  //     componentRef.clickBuy.subscribe((productId: any) => {
+  //       this.data = localStorage.getItem('carts') ? JSON.parse(localStorage.getItem('carts')!) : [];
+  //       for(let c of this.data){
+  //         if(c.product.productId == productId){
+  //           if(c.quantity == 1){
+  //             this.countPro++;
+  //           }
+  //         }
+  //       }
+  //     })
+  //   }
+  // }
 
   addTotalFromHome(componentRef:any) {
     if(componentRef instanceof HomeComponent) {
@@ -73,7 +91,6 @@ export class UserInterfaceComponent implements OnInit {
     if(componentRef instanceof StoreComponent) {
       componentRef.clickTotal.subscribe((price) => {
         this.proPrice = this.proPrice + price
-        console.log(this.proPrice);
       })
     }
   }
@@ -82,7 +99,6 @@ export class UserInterfaceComponent implements OnInit {
     if(componentRef instanceof ProductDetailComponent) {
       componentRef.clickTotal.subscribe((price) => {
         this.proPrice = this.proPrice + price
-        console.log(this.proPrice);
       })
     }
   }
@@ -93,7 +109,6 @@ export class UserInterfaceComponent implements OnInit {
     if(componentRef instanceof HomeComponent) {
       componentRef.clickWithlist.subscribe((p) => {
         this.countWishList++;
-        console.log(p);
       })
     }
   }
@@ -102,7 +117,6 @@ export class UserInterfaceComponent implements OnInit {
     if(componentRef instanceof StoreComponent) {
       componentRef.clickWithlist.subscribe((p) => {
         this.countWishList++;
-        console.log(p);
       })
     }
   }
