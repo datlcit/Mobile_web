@@ -160,13 +160,17 @@ export class StoreComponent implements OnInit {
     })
   }
 
-  lowCost: number = 0;
-  highCost: number = 10000000;
+  lowCost:any = 0;
+  highCost:any = 10000000;
   rangeProduct(){
-    this.service.rangeProductByPrice(this.lowCost, this.highCost).subscribe(res =>{
-      //Lấy các sản phẩm ra
-      this.shop_product = res;
-      for(let i=0;i<this.shop_product.length;i++){
+    this.shop_product = [];
+    this.service.get().subscribe(res =>{
+      for(let i=0;i<res.length;i++){
+        if(res[i].price >= this.lowCost && res[i].price <= this.highCost){
+          this.shop_product.push(res[i]);
+        }
+      }
+      for(let i=0;i<res.length;i++){
         this.img = this.shop_product[i].productImage.split(" ");
         this.shop_product[i].productImage = this.img[0];
       }

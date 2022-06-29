@@ -47,12 +47,15 @@
                   <a class="sort-button" href="javascript:void(0)" (click)="descNameButton()">Tên Z-A</a>
                   <a class="sort-button" href="javascript:void(0)" (click)="ascButton()">Giá tăng dần</a>
                   <a class="sort-button" href="javascript:void(0)" (click)="descButton()">Giá giảm dần</a>
+
                   <div style="display: flex; justify-content: center; align-items: center;">
-                    <p style="margin: 0 8px">Khoảng giá: </p>
-                    <input type="number" value="{{lowCost}}">
-                    <p style="margin: 0 5px;">đến</p>
-                    <input type="number" value="{{highCost}}">
-                    <button (click)="rangeProduct()" style="margin-left: 8px;">Tìm</button>
+
+                      <p style="margin: 0 8px">Khoảng giá: </p>
+                      <input [(ngModel)]="lowCost" min="0" type="number">
+                      <p style="margin: 0 5px;">đến</p>
+                      <input [(ngModel)]="highCost" min="0" type="number">
+                      <button class="search-range" (click)="rangeProduct()" style="margin-left: 8px;">Tìm</button>
+
                   </div>
               </div>
               <!--shop toolbar end-->

@@ -45,8 +45,4 @@ export class ProductService {
     descName(): Observable<any>{
       return this.http.get(this.base_url + '/descName');
     }
-
-    rangeProductByPrice(lowCost:any, highCost:any): Observable<any>{
-      return this.http.get(this.base_url + '/range', lowCost, highCost);
-    }
 }
