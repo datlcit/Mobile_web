@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { LazyLoadScriptService } from 'src/app/Modules/admin/adminServices/lazy-load-script.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { LazyLoadScriptService } from 'src/app/Modules/admin/adminServices/lazy-
 export class CartComponent implements OnInit {
 
   data: any[] = [];
-  constructor(private lazyLoad: LazyLoadScriptService) { }
+  constructor(private lazyLoad: LazyLoadScriptService, private router: Router) { }
 
   ngOnInit(): void {
     this.lazyLoad.loadScript('assets/js/main.js').subscribe(_ => {
@@ -47,6 +48,15 @@ export class CartComponent implements OnInit {
   deleteCart(index: number){
     this.data.splice(index, 1);
     localStorage.setItem('carts', JSON.stringify(this.data));
+  }
+
+  checkUser(){
+    if(localStorage['userName'] == null){
+      alert("Bạn cần đăng nhập để có thể mua hàng!");
+      this.router.navigate(['/login']);
+    } else {
+      this.router.navigate(['/checkout']);
+    }
   }
 
 }

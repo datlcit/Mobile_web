@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { CustomerAdminService } from '../../adminServices/customer-admin.service';
 import { OrderAdminService } from '../../adminServices/order-admin.service';
 
@@ -21,6 +21,12 @@ export class ListOrdersComponent implements OnInit {
 
       this.listOrders = res;
     })
+  }
+
+  @Output() clickOrderDetail: EventEmitter<any> = new EventEmitter();
+  details(orderId: number){
+    this.clickOrderDetail.emit(orderId);
+    console.log(orderId);
   }
 
 }

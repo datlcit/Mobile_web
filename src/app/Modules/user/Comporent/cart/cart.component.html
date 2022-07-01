@@ -100,7 +100,7 @@
                                   <p class="cart_amount">{{subtotal + 50000}} VNĐ</p>
                               </div>
                               <div *ngIf="subtotal != 0" class="checkout_btn">
-                                  <a href="/checkout">Tới trang thanh toán </a>
+                                  <a href="javascript:void(0)" (click)="checkUser()">Tới trang thanh toán </a>
                               </div>
                           </div>
                       </div>

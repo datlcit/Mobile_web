@@ -22,6 +22,7 @@ import { ListPromotionsComponent } from './Comporent/list-promotions/list-promot
 import { HttpClientModule } from '@angular/common/http';
 import { ListUsersComponent } from './Comporent/list-users/list-users.component';
 import { RouterModule } from '@angular/router';
+import { ListOrderDetailsComponent } from './Comporent/list-order-details/list-order-details.component';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import { RouterModule } from '@angular/router';
     ListOrdersComponent,
     ListProductsComponent,
     ListPromotionsComponent,
-    ListUsersComponent
+    ListUsersComponent,
+    ListOrderDetailsComponent
   ],
   imports: [
     CommonModule,

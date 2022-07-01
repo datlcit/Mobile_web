@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { UserAdminService } from 'src/app/Modules/admin/adminServices/user-admin.service';
 import { LazyLoadServiceService } from '../../userServices/lazy-load-service.service';
 
@@ -10,7 +11,8 @@ import { LazyLoadServiceService } from '../../userServices/lazy-load-service.ser
 export class HeaderComponent implements OnInit {
 
   constructor(private lazyLoad: LazyLoadServiceService,
-    private userService: UserAdminService) { }
+    private userService: UserAdminService,
+    private router: Router) { }
 
   countCart: number = 0;
   total: number = 0;
@@ -47,6 +49,15 @@ export class HeaderComponent implements OnInit {
   //Nút đăng xuất
   logOut(){
     localStorage.removeItem('userName');
+  }
+
+  checkUser(){
+    if(localStorage['userName'] == null){
+      alert("Bạn cần đăng nhập để có thể mua hàng!");
+      this.router.navigate(['/login']);
+    } else {
+      this.router.navigate(['/checkout']);
+    }
   }
 
 

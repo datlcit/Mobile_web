@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
       if(res != null) {
         alert('Đăng nhập thành công');
         localStorage.setItem('userName', this.formLogin.get('userName')?.value);
-        this.router.navigate(['']);
+        this.router.navigate(['/store']);
       }
     })
   }
@@ -76,7 +76,9 @@ export class LoginComponent implements OnInit {
       //   console.log(this.userRoleAdded)
       // })
     })
-    alert('Đăng ký thành công!')
+    alert('Đăng ký thành công, chúc bạn mua hàng vui vẻ!')
+    localStorage.setItem('userName', this.formRegister.get('userName')?.value);
+    this.router.navigate(['/store']);
   }
 
 }

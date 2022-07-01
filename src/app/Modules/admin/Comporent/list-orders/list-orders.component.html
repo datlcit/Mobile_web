@@ -48,7 +48,7 @@
                       <td>{{o.status}}</td>
                       <td>{{o.createAt}}</td>
                       <td style="text-align: center">
-                          <a class="btn btn-primary btn-sm" href="#" style="margin-top: 0">Detail</a>
+                          <a (click)="details(o.orderId)" class="btn btn-primary btn-sm" href="javascript:void(0)" style="margin-top: 0">Detail</a>
                       </td>
                   </tr>
                   </tbody>

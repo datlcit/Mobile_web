@@ -70,10 +70,10 @@
                               </form>
                           </div>
                           <div class="middel_right_info">
-                              <div class="header_wishlist">
+                              <!-- <div class="header_wishlist">
                                   <a href="wishlist.html"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
                                   <span class="wishlist_quantity">{{countWishList}}</span>
-                              </div>
+                              </div> -->
                               <div class="mini_cart_wrapper">
                                   <a href="/cart"><i class="fa fa-shopping-bag"
                                           aria-hidden="true"></i>{{total+proPrice}} VNĐ <i class="fa fa-angle-down"></i></a>
@@ -103,7 +103,7 @@
                                               <a href="/cart">View cart</a>
                                           </div>
                                           <div class="cart_button">
-                                              <a href="/checkout">Checkout</a>
+                                              <a (click)="checkUser()" href="javascript:void(0)">Checkout</a>
                                           </div>
 
                                       </div>

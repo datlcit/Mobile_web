@@ -2,9 +2,10 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { OrderAdminService } from 'src/app/Modules/admin/adminServices/order-admin.service';
+import { OrderDetailAdminService } from 'src/app/Modules/admin/adminServices/order-detail-admin.service';
 import { CustomerUserService } from '../../userServices/customer-user.service';
 import { OrderDetailUserService } from '../../userServices/order-detail-user.service';
-import { OrderUserService } from '../../userServices/order-user.service';
 
 @Component({
   selector: 'app-checkout',
@@ -24,8 +25,8 @@ export class CheckoutComponent implements OnInit {
   constructor(private fb: FormBuilder,
     private route: ActivatedRoute,
      private customerService: CustomerUserService,
-     private orderService: OrderUserService,
-     private orderDetailService: OrderDetailUserService,
+     private orderService: OrderAdminService,
+     private orderDetailService: OrderDetailAdminService,
      private router: Router,
      private http: HttpClient) {  }
 

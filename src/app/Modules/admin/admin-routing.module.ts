@@ -13,6 +13,7 @@ import { EditPromotionComponent } from './Comporent/edit-promotion/edit-promotio
 import { HomeComponent } from './Comporent/home/home.component';
 import { ListCategoriesComponent } from './Comporent/list-categories/list-categories.component';
 import { ListCustomersComponent } from './Comporent/list-customers/list-customers.component';
+import { ListOrderDetailsComponent } from './Comporent/list-order-details/list-order-details.component';
 import { ListOrdersComponent } from './Comporent/list-orders/list-orders.component';
 import { ListProductsComponent } from './Comporent/list-products/list-products.component';
 import { ListPromotionsComponent } from './Comporent/list-promotions/list-promotions.component';
@@ -39,6 +40,7 @@ const routes: Routes = [
       {path: 'listProducts', component: ListProductsComponent},
       {path: 'listPromotions', component: ListPromotionsComponent},
       {path: 'listUsers', component: ListUsersComponent},
+      {path: 'listOrderDetails', component: ListOrderDetailsComponent},
 
 
       {path: '', redirectTo: '/admin/home', pathMatch: 'full'}
