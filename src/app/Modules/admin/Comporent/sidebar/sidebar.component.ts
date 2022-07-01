@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LazyLoadScriptService } from '../../adminServices/lazy-load-script.service';
+import { ListOrdersComponent } from '../list-orders/list-orders.component';
 
 @Component({
   selector: 'app-sidebar',
@@ -12,8 +13,17 @@ export class SidebarComponent implements OnInit {
 
   ngOnInit(): void {
     this.lazyLoad.loadScript('assets/dist/js/adminlte.min.js').subscribe(_ => {
-      console.log('Jquery is loaded!')
     });
   }
+
+  // orderId:number = 0;
+  // details(componentRef:any) {
+  //   if(componentRef instanceof ListOrdersComponent) {
+  //     componentRef.clickOrderDetail.subscribe((orderId) => {
+  //       this.orderId = orderId;
+  //       console.log( this.orderId)
+  //     })
+  //   }
+  // }
 
 }

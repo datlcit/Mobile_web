@@ -17,6 +17,8 @@ export class HeaderComponent implements OnInit {
   countCart: number = 0;
   total: number = 0;
   ngOnInit(): void {
+    this.lazyLoad.loadScript('assets/js/main.js').subscribe(_ => {
+    });
     this.calTotal();
     this.loadCurrentUser();
   }
@@ -69,26 +71,4 @@ export class HeaderComponent implements OnInit {
   @Input() countWishList:number = 0;
   @Input() proPrice:number = 0;
 
-  //Các chức năng tìm kiếm
-
-  //Tìm kiếm điện thoại
-//1. Tạo biến theo dòng điện thoại
-iphone_13 :string = "Iphone 13"
-iphone_13_pro_max :string = "Iphone 13 Pro Max"
-iphone_12 :string = "Iphone 12"
-iphone_12_mini :string = "Iphone 12 Mini"
-
-samsung_galaxy_s22:string ="Samsung Galaxy S22"
-samsung_galaxy_s22_ultra:string ="Samsung Galaxy S22 Ultra"
-samsung_galaxy_z_flip3_5g:string = "Samsung Galaxy Z Flip3 5G"
-samsung_galaxy_z_fold3_5g:string = "Samsung Galaxy Z Fold3 5G"
-
-xiaomi_12:string = "Xiaomi 12"
-xiaomi_12_pro:string = "Xiaomi 12 Pro"
-redmi_note_11:string = "Redmi Note 11"
-redmi_note_11_pro:string = "Redmi Note 11 Pro"
-
-phoneDetail(name: string){
-
-}
 }

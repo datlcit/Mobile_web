@@ -34,28 +34,8 @@
                       <button data-role="grid_list" type="button" class="btn-list" data-bs-toggle="tooltip"
                           title="List"></button>
                   </div>
-                  <!-- <div class=" niceselect_option">
-                      <div class="select_option" action="#">
-                          <select name="orderby" id="short">
-                              <option selected value="1">Sắp xếp theo</option>
-                              <option value="2"><a href="javascript:void(0)" (click)="ascButton()">Giá tăng dần</a></option>
-                              <option value="3">Giá giảm dần</option>
-                          </select>
-                      </div>
-                  </div> -->
-                  <a class="sort-button" href="javascript:void(0)" (click)="ascNameButton()">Tên A-Z</a>
-                  <a class="sort-button" href="javascript:void(0)" (click)="descNameButton()">Tên Z-A</a>
-                  <a class="sort-button" href="javascript:void(0)" (click)="ascButton()">Giá tăng dần</a>
-                  <a class="sort-button" href="javascript:void(0)" (click)="descButton()">Giá giảm dần</a>
-
-                  <div style="display: flex; justify-content: center; align-items: center;">
-
-                      <p style="margin: 0 8px">Khoảng giá: </p>
-                      <input [(ngModel)]="lowCost" min="0" type="number">
-                      <p style="margin: 0 5px;">đến</p>
-                      <input [(ngModel)]="highCost" min="0" type="number">
-                      <button class="search-range" (click)="rangeProduct()" style="margin-left: 8px;">Tìm</button>
-
+                  <div class="page_amount">
+                    <p>Có {{count}} sản phẩm</p>
                   </div>
               </div>
               <!--shop toolbar end-->
@@ -64,7 +44,7 @@
                       <article class="single_product">
                           <figure>
                               <div class="product_thumb editProductThumb">
-                                  <a href="../productDetail/{{p.productId}}" class="primary_img" href="">
+                                  <a href="../..//productDetail/{{p.productId}}" class="primary_img" href="">
                                     <img src="{{p.productImage}}" alt=""></a>
                                   <!-- <a class="secondary_img" href="product-details.html"><img
                                           src="assets/img/product/product2.jpg" alt=""></a> -->
@@ -121,12 +101,12 @@
                                       </div>
                                   </div>
                                   <div class="right_caption">
-                                      <div (click)="addTotal(p.price)"class="add_to_cart">
+                                      <div class="add_to_cart">
                                           <button title="add to cart">Thêm vào giỏ hàng</button>
                                       </div>
                                       <div class="action_links editShopList">
                                           <ul>
-                                              <li (click)="addToWishList(p.productId)" class="wishlist wishlistShopList"><button href="wishlist.html"
+                                              <li class="wishlist wishlistShopList"><button href="wishlist.html"
                                                       title="Add to Wishlist"><i class="fa fa-heart-o"
                                                           aria-hidden="true"></i>Yêu thích</button></li>
                                               <!-- <li class="compare"><a href="#" title="compare"><span

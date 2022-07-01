@@ -40,7 +40,7 @@ const routes: Routes = [
       {path: 'listProducts', component: ListProductsComponent},
       {path: 'listPromotions', component: ListPromotionsComponent},
       {path: 'listUsers', component: ListUsersComponent},
-      {path: 'listOrderDetails', component: ListOrderDetailsComponent},
+      {path: 'listOrderDetails/:orderId', component: ListOrderDetailsComponent},
 
 
       {path: '', redirectTo: '/admin/home', pathMatch: 'full'}

@@ -17,6 +17,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OrderDetailComponent } from './Comporent/order-detail/order-detail.component';
 import { CongratulationComponent } from './Comporent/congratulation/congratulation.component';
+import { PhoneModelComponent } from './Comporent/phone-model/phone-model.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { CongratulationComponent } from './Comporent/congratulation/congratulati
     StoreComponent,
     NotFoundComponent,
     OrderDetailComponent,
-    CongratulationComponent
+    CongratulationComponent,
+    PhoneModelComponent
   ],
   imports: [
     CommonModule,

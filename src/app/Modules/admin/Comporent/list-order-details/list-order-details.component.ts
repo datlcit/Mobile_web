@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { OrderAdminService } from '../../adminServices/order-admin.service';
 import { OrderDetailAdminService } from '../../adminServices/order-detail-admin.service';
 
@@ -9,7 +10,7 @@ import { OrderDetailAdminService } from '../../adminServices/order-detail-admin.
 })
 export class ListOrderDetailsComponent implements OnInit {
 
-  constructor(private orderDetailService: OrderDetailAdminService) { }
+  constructor(private orderService: OrderAdminService ,private orderDetailService: OrderDetailAdminService, private router: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.loadOrders();
@@ -20,7 +21,13 @@ export class ListOrderDetailsComponent implements OnInit {
   loadOrders(){
     this.orderDetailService.get().subscribe(res => {
 
-      this.listOrderDetails = res;
+      for(let od of res){
+        if(od.order.orderId == this.router.snapshot.params['orderId']){
+          this.listOrderDetails.push(od);
+        }
+      }
+
+      // this.listOrderDetails = res;
       console.log(this.listOrderDetails)
       for(let od of this.listOrderDetails){
         this.total += od.price*od.quantity;
@@ -28,5 +35,4 @@ export class ListOrderDetailsComponent implements OnInit {
       this.total += 50000;
     })
   }
-
 }

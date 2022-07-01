@@ -41,35 +41,6 @@ export class StoreComponent implements OnInit {
     })
   }
 
-  buy(product: any) {
-    // Lấy dữ liệu giỏ hàng trong storage
-    let carts = localStorage.getItem('carts') ? JSON.parse(localStorage.getItem('carts')!) : [];
-
-    const itemCart = {
-      product: product,
-      quantity: 1
-    };
-
-    // Kiểm tra xem sản phẩm có trong giỏ chưa
-    let flag = false;
-    carts = carts.map((x: any) =>{
-      if(x.product.productId == product.productId){
-        x.quantity += 1;
-        flag = true;
-      }
-      return x;
-    })
-
-    if(!flag){
-      carts.push(itemCart);
-    }
-
-    //Lưu giỏ vào localStorage
-    localStorage.setItem('carts', JSON.stringify(carts));
-
-    this.clickBuy.emit(product.productId);
-}
-
 
   @Input() countPro:number = 0;
   @Input() countWishList:number = 0;

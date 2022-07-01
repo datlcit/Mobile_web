@@ -24,15 +24,15 @@ export class ProductDetailComponent implements OnInit {
     this.getDataHasOneImg();
 
   }
+  mainImg:any;
   //function đẩy đối tượng vào trang
   getProduct(){
     const productId = this.router.snapshot.params['productId'];
     this.productService.findById(productId).subscribe(res => {
       this.dataProduct = res;
       this.dataProduct.productImage = this.dataProduct.productImage.split(" ");
+      this.mainImg = this.dataProduct.productImage[0];
       this.dataProduct.color = this.dataProduct.color.split(";");
-      console.log(this.dataProduct);
-      console.log(this.dataProduct.color);
     });
   }
 
@@ -46,7 +46,6 @@ export class ProductDetailComponent implements OnInit {
       this.dataHasOneImg.productImage = this.dataHasOneImg.productImage[0]
       this.dataHasOneImg.color = this.dataHasOneImg.color.split(";");
       this.dataHasOneImg.color = this.dataHasOneImg.color[0]
-      console.log(this.dataHasOneImg);
     });
   }
 
@@ -54,7 +53,6 @@ export class ProductDetailComponent implements OnInit {
   chooseColor(c: string): void{
     this.dataHasOneImg.color =  this.dataHasOneImg.color.toString();
     this.dataHasOneImg.color = c;
-    console.log(this.dataHasOneImg);
   }
 
 
@@ -99,7 +97,10 @@ export class ProductDetailComponent implements OnInit {
 
     this.clickBuy.emit(product.productId);
     this.clickBuy2.emit(product.color);
-    console.log(product.color)
+}
+
+replaceImg(img:any){
+  this.mainImg = img;
 }
 
 }
